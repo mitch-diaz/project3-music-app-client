@@ -2,15 +2,13 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 
-
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 	const [theUser, setTheUser] = useState(null);
 
 	const getUserInfo = () => {
-		axios
-			.get("http://localhost:5005/serializeuser", {
+		axios.get("http://localhost:5005/serializeuser", {
 				withCredentials: true,
 			})
 			.then((response) => {
@@ -26,8 +24,7 @@ export const UserProvider = ({ children }) => {
 	}, []);
 
 	const logout = () => {
-		axios
-			.post("http://localhost:5005/logout", {}, { withCredentials: true })
+		axios.post("http://localhost:5005/logout", {}, { withCredentials: true })
 			.then((response) => {
 				console.log(response.data);
 				if (response.data.message === "successfully logged out")

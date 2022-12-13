@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"; 
+// import { Link } from "react-router-dom"; 
 // import axios from "axios";
 
 
 function LandingPage() {
 
-    // axios.get("http://localhost:5005/auth/signup")
+    // axios.get("http://localhost:5005")
     // .then()
     // .catch()
 
