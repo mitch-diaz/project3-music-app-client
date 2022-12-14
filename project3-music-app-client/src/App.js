@@ -1,24 +1,23 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom"; 
 import LandingPage from './pages/LandingPage';
-import SignUpForm from "./components/SignUpForm"
-import { UserProvider } from "./contexts/UserContext";
+import SignUpOrLogin from "./pages/SignUpOrLogin";
+import ArtistAcctHome from './pages/ArtistAcctHome';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 
 function App() {
 
     return (
-        <div className="App">
-            <UserProvider>
-
-                <LandingPage/>
-
-                <Routes>
-                    <Route path="/auth/login" element={<SignUpForm />} />
-                    <Route path="/auth/signup" element={<SignUpForm />} />
-                </Routes>
-
-            </UserProvider>
+        <div>
+                        
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/auth/login" element={<SignUpOrLogin />} />
+                <Route path="/auth/signup" element={<SignUpOrLogin />} />
+                <Route path="" element={<ArtistAcctHome />} />
+            </Routes>
 
         </div>
     );

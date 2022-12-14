@@ -1,31 +1,25 @@
-// import { Link } from "react-router-dom"; 
-// import axios from "axios";
-
+import { Link } from "react-router-dom"; 
+import axios from "axios";
+import LoginOrSignupBtns from "../components/LoginOrSignupBtns";
 
 function LandingPage() {
 
-    // axios.get("http://localhost:5005")
-    // .then()
-    // .catch()
+    axios.get("http://localhost:5005")
+    .then((response) => {
+        console.log(response);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 
   return (
-    <div>
-        <div className="App-header">
+    <div className="App">
+            <div className="App-header">
 
                 <h1>Music App</h1>
                 <p>Build your playlist and share your music creations with the world.</p>
-
-                <div className="App-btns-container">
-
-                    <button className="App-btn1"> Login
-                        {/* <Link to="/auth/login">Login</Link>  */}
-                    </button>
-                    
-                    <button className="App-btn2"> Creator Sign up
-                        {/* <Link to="/auth/signup">Creator Sign up</Link>  */}
-                    </button>
-
-                </div>
+                
+                <LoginOrSignupBtns/>
 
             </div>
 

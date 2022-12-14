@@ -1,16 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import UserContext from "../contexts/UserContext";
 
 
-function SignUpForm({action}) {
+function SignUpOrLogin({action, getUserInfo}) {
 
     const [formState, setFormState] = useState({
-      username: "",
+      email: "",
       password: "",
     });
 
-    const { getUserInfo } = useContext(UserContext);
 
     const updateInput = (e, thingToUpdate) => {
       setFormState({ ...formState, [thingToUpdate]: e.target.value });
@@ -21,9 +19,9 @@ function SignUpForm({action}) {
       if (action === "signup") endpoint = "signup";
       if (action === "login") endpoint = "login";
 
-		axios.post("http://localhost:5005/" + endpoint,
+		axios.post("http://localhost:5005/auth/" + endpoint,
 				{
-					username: formState.username,
+					email: formState.email,
 					password: formState.password,
 				},
 				{ withCredentials: true }
@@ -38,30 +36,30 @@ function SignUpForm({action}) {
 
     return (
         <div className={action}>
-          {action === "signup" ? "Signup" : "Login"}
+          {action === "signup" ? <h1>Signup</h1> : <h1>Login</h1>}
             
             <div>
-                Username
+                <h4>Email</h4>
                 <input
                     type="text"
-                    value={formState.username}
-                    onChange={(e) => {updateInput(e, "username");}}
-                    />
+                    value={formState.email}
+                    onChange={(e) => {updateInput(e, "email");}} />
             </div>
 
             <div>
-                Password
+                <h4>Password</h4>
                 <input
                     type="text"
                     value={formState.password}
-                    onChange={(e) => {updateInput(e, "password");}}
-                    />
+                    onChange={(e) => {updateInput(e, "password");}} />
             </div>
 
-            <button onClick={submitSignupForm}>Submit</button>
+            <div>
+                <button onClick={submitSignupForm}>Submit</button>
+            </div>
 
         </div>
     );
 }
 
-export default SignUpForm
+export default SignUpOrLogin
