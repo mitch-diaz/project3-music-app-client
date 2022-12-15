@@ -93,3 +93,9 @@ a {
   background-color: rgba(240, 255, 255, 0.183);
   margin-left: 15px;
 }
+
+.signUpOrLogin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

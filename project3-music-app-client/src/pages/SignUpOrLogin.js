@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 
+
 function SignUpOrLogin({action, getUserInfo}) {
 
     const [formState, setFormState] = useState({
@@ -35,29 +36,32 @@ function SignUpOrLogin({action, getUserInfo}) {
 	  };
 
     return (
-        <div className={action}>
-          {action === "signup" ? <h1>Signup</h1> : <h1>Login</h1>}
-            
-            <div>
-                <h4>Email</h4>
-                <input
-                    type="text"
-                    value={formState.email}
-                    onChange={(e) => {updateInput(e, "email");}} />
-            </div>
+        <div className="signUpOrLogin-form">
 
-            <div>
-                <h4>Password</h4>
-                <input
-                    type="text"
-                    value={formState.password}
-                    onChange={(e) => {updateInput(e, "password");}} />
-            </div>
+            <div className={action}>
+                {action === "signup" ? <h1>Signup</h1> : <h1>Login</h1>}
+                <div>
+                    <h4>Email</h4>
+                    <input
+                      type="text"
+                      value={formState.email}
+                      onChange={(e) => {updateInput(e, "email");}} />
+                </div>
 
-            <div>
+                <div>
+                    <h4>Password</h4>
+                    <input
+                      type="text"
+                      value={formState.password}
+                      onChange={(e) => {updateInput(e, "password");}} />
+                </div>
+
+                <br/>
+
                 <button onClick={submitSignupForm}>Submit</button>
-            </div>
 
+            </div>
+            
         </div>
     );
 }

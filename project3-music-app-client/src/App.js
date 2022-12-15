@@ -14,9 +14,9 @@ function App() {
                         
             <Routes>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/auth/login" element={<SignUpOrLogin />} />
-                <Route path="/auth/signup" element={<SignUpOrLogin />} />
-                <Route path="" element={<ArtistAcctHome />} />
+                <Route path="/auth/login" element={<SignUpOrLogin action="login" />} />
+                <Route path="/auth/signup" element={<SignUpOrLogin action="signup" />} />
+                <Route path="/auth/user-profile" element={<ArtistAcctHome />} />
             </Routes>
 
         </div>
