@@ -1,14 +1,14 @@
-import "../App.css";
 import {useState} from "react";
 import axios from "axios";
 
 
 
 
-function ArtistSongTitleForm() {
+function SongCreate() {
 
-  const [formState, setFormState] = useState({
+    const [formState, setFormState] = useState({
         songTitle: "", 
+        songUrl: "", 
     });
 
     const updateInput = (e, thingToUpdate) => {
@@ -19,6 +19,7 @@ function ArtistSongTitleForm() {
         console.log(formState);
         axios.post("http://localhost:5005/songs/add-song",{
             songTitle: formState.songTitle,
+            songUrl: formState.songUrl,
         })
         .then((response)=>{
             console.log(response);
@@ -29,9 +30,14 @@ function ArtistSongTitleForm() {
 
     return(
         <div>
-            <h3>Your Song Title</h3>
             <div>
+                <p>Your Song Title</p>
                 <input type="text" value={formState.songTitle} onChange={(e)=>{updateInput(e,"songTitle")}} />
+            </div>
+
+            <div>
+                <p>Upload Song File</p>
+                <input type="text" value={formState.songUrl} onChange={(e)=>{updateInput(e,"songUrl")}} />
             </div>
 
             <button onClick={createSongTitle} >Submit</button>
@@ -39,4 +45,4 @@ function ArtistSongTitleForm() {
     )
 }
 
-export default ArtistSongTitleForm
+export default SongCreate

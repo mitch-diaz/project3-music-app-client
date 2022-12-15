@@ -1,19 +1,16 @@
-import ArtistInfoForm from "../components/ArtistInfoForm";
-import ArtistSongTitleForm from "../components/ArtistSongTitleForm";
-import ArtistSongUploadForm from "../components/ArtistSongUploadForm";
-import ArtistVideoForm from "../components/ArtistVideoForm";
-import ArtistPictureUploadForm from "../components/ArtistPictureUploadForm";
+import ArtistInfoDetails from "../components/user-related/ArtistInfoDetails";
+import ArtistInfoUpdate from "../components/user-related/ArtistInfoUpdate";
+import ArtistSongTitleForm from "../components/song-related/SongCreate";
+import ArtistSongUploadForm from "../components/song-related/SongUpload";
+import VideoCreate from "../components/video-related/VideoCreate";
 
 
 function ArtistAcctHome() {
 
     return (
         <div>
-            <ArtistInfoForm/>
-            <ArtistPictureUploadForm/>
-            <ArtistSongTitleForm/>
-            <ArtistSongUploadForm/>
-            <ArtistVideoForm/>
+            <ArtistInfoDetails/>
+            <ArtistInfoUpdate/>
         </div>
     )
 }

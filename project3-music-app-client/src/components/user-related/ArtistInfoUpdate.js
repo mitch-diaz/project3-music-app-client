@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 
-function ArtistInfoForm({user, getUserInfo}) {
+function ArtistInfoUpdate({user, getUserInfo}) {
 
     const [artistInfoState, setArtistInfoState] = useState(user);
 
@@ -17,6 +17,7 @@ function ArtistInfoForm({user, getUserInfo}) {
           lastName: artistInfoState.lastName,
           creatorTitle: artistInfoState.creatorTitle,
           creatorProfile: artistInfoState.creatorProfile,
+          imageUrl: artistInfoState.imageUrl,
       })
         .then((response) => {
           getUserInfo();
@@ -29,7 +30,7 @@ function ArtistInfoForm({user, getUserInfo}) {
 
     return (
         <div>
-            <div>
+            <div className="update-form">
 
                 <div>
                     <p>First Name:</p>
@@ -42,13 +43,18 @@ function ArtistInfoForm({user, getUserInfo}) {
                 </div>
                 
                 <div>
-                    <p>Band name or your name:</p>
+                    <p>Band name (or your name):</p>
                     <input value={artistInfoState.creatorTitle} onChange={(e)=>{updateArtistInput(e, "creatorTitle")}}/>
                 </div>
                 
                 <div>
                     <p>About:</p>
                     <input value={artistInfoState.creatorProfile} onChange={(e)=>{updateArtistInput(e, "creatorProfile")}} />
+                </div>
+
+                <div>
+                    <p>Upload Photo:</p>
+                    <input value={artistInfoState.imageUrl} onChange={(e)=>{updateArtistInput(e, "imageUrl")}} />
                 </div>
 
             </div>
@@ -58,4 +64,4 @@ function ArtistInfoForm({user, getUserInfo}) {
     )
 }
 
-export default ArtistInfoForm
+export default ArtistInfoUpdate

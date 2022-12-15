@@ -3,11 +3,42 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from './pages/LandingPage';
 import SignUpOrLogin from "./pages/SignUpOrLogin";
 import ArtistAcctHome from './pages/ArtistAcctHome';
-import {useState, useEffect} from 'react';
+import SongList from './components/song-related/SongList';
+import VideoList from './components/video-related/VideoList';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
 function App() {
+
+  const [theUser, setTheUser] = useState(null);
+
+  const getUserInfo = () =>{
+    axios.get("http://localhost:5005/auth/serializeuser", {withCredentials: true})
+    .then((response)=>{
+      setTheUser(response.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
+  useEffect(()=>{
+    getUserInfo();
+  }, [])
+
+
+  const logout = () =>{
+    axios.post("http://localhost:5005/auth/logout",{}, {withCredentials: true})
+    .then((response)=>{
+      console.log(response.data)
+      if(response.data.message === "successfully logged out")setTheUser(null);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
 
     return (
         <div>
@@ -17,6 +48,8 @@ function App() {
                 <Route path="/auth/login" element={<SignUpOrLogin action="login" />} />
                 <Route path="/auth/signup" element={<SignUpOrLogin action="signup" />} />
                 <Route path="/auth/user-profile" element={<ArtistAcctHome />} />
+                <Route path="/songs-list" element={<SongList/>} />
+                <Route path="/video-list" element={<VideoList/>} />
             </Routes>
 
         </div>

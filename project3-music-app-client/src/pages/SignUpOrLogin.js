@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 function SignUpOrLogin({action, getUserInfo}) {
+    const navigate = useNavigate();
 
     const [formState, setFormState] = useState({
       email: "",
       password: "",
     });
-
 
     const updateInput = (e, thingToUpdate) => {
       setFormState({ ...formState, [thingToUpdate]: e.target.value });
@@ -29,6 +30,7 @@ function SignUpOrLogin({action, getUserInfo}) {
 			)
 			.then((response) => {
 				getUserInfo();
+        navigate("/auth/user-profile");
 			})
 			.catch((err) => {
 				console.log(err);

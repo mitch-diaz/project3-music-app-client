@@ -27,13 +27,13 @@ function ArtistVideoForm() {
 
     return(
         <div>
-            <h3>Your Video Title</h3>
             <div>
+                <p>Your Video Title</p>
                 <input type="text" value={formState.videoTitle} onChange={(e)=>{updateInput(e,"videoTitle")}} />
             </div>
 
-            <h3>Your Video Link</h3>
             <div>
+                <p>Your Video Link</p>
                 <input type="text" value={formState.videoUrl} onChange={(e)=>{updateInput(e,"videoUrl")}} />
             </div>
             <button onClick={createVideoInfo} >Submit</button>
