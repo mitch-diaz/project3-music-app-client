@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 
 
-
 function ArtistInfoUpdate({user, getUserInfo}) {
 
     const [artistInfoState, setArtistInfoState] = useState(user);
@@ -10,15 +9,19 @@ function ArtistInfoUpdate({user, getUserInfo}) {
     const updateArtistInput = (e, thingToUpdate) => {
         setArtistInfoState({ ...artistInfoState, [thingToUpdate]: e.target.value });
     };    
+    const updateFile = (e) => {
+        setArtistInfoState({ ...artistInfoState, imageFile: e.target.files[0]});
+    };   
     
     const submitForm = () => {
-      axios.put("http://localhost:5005/auth/update/"+user._id, {
-          firstName: artistInfoState.firstName,
-          lastName: artistInfoState.lastName,
-          creatorTitle: artistInfoState.creatorTitle,
-          creatorProfile: artistInfoState.creatorProfile,
-          imageUrl: artistInfoState.imageUrl,
-      })
+
+        const formThing = new FormData();
+        formThing.append("firstName", artistInfoState.firstName)
+        formThing.append("lastName", artistInfoState.lastName)
+        formThing.append("creatorTitle", artistInfoState.creatorTitle)
+        formThing.append("creatorProfile", artistInfoState.creatorProfile)
+        formThing.append("imageFile", artistInfoState.imageFile)
+      axios.put("http://localhost:5005/auth/update/"+user._id, formThing)
         .then((response) => {
           getUserInfo();
         })
@@ -26,11 +29,12 @@ function ArtistInfoUpdate({user, getUserInfo}) {
           console.log(err)
         })
     }
-    
+    console.log(artistInfoState);
 
     return (
-        <div>
-            <div className="update-form">
+        <div className="update-form-box-container">
+            <div className="update-form-box">
+                <h2>Update your Profile</h2>
 
                 <div>
                     <p>First Name:</p>
@@ -49,17 +53,20 @@ function ArtistInfoUpdate({user, getUserInfo}) {
                 
                 <div>
                     <p>About:</p>
-                    <input value={artistInfoState.creatorProfile} onChange={(e)=>{updateArtistInput(e, "creatorProfile")}} />
+                    <textarea value={artistInfoState.creatorProfile} onChange={(e)=>{updateArtistInput(e, "creatorProfile")}} />
+                </div>
+
+                <div className="upload-input">
+                    <p>Upload Photo:</p>
+                    <input type="file" onChange={(e)=>{updateFile(e)}} />
                 </div>
 
                 <div>
-                    <p>Upload Photo:</p>
-                    <input value={artistInfoState.imageUrl} onChange={(e)=>{updateArtistInput(e, "imageUrl")}} />
+                    <button onClick={submitForm}>Submit</button>
                 </div>
 
             </div>
 
-            <button onClick={submitForm}>Submit</button>
         </div>
     )
 }

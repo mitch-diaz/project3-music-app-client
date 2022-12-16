@@ -28,26 +28,15 @@ function App() {
   }, [])
 
 
-  const logout = () =>{
-    axios.post("http://localhost:5005/auth/logout",{}, {withCredentials: true})
-    .then((response)=>{
-      console.log(response.data)
-      if(response.data.message === "successfully logged out")setTheUser(null);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
-  }
-
-
+    console.log(theUser);
     return (
         <div>
                         
             <Routes>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/auth/login" element={<SignUpOrLogin action="login" />} />
-                <Route path="/auth/signup" element={<SignUpOrLogin action="signup" />} />
-                <Route path="/auth/user-profile" element={<ArtistAcctHome />} />
+                <Route path="/auth/login" element={<SignUpOrLogin action="login" getUserInfo={getUserInfo} />} />
+                <Route path="/auth/signup" element={<SignUpOrLogin action="signup" getUserInfo={getUserInfo} />} />
+                <Route path="/auth/user-profile" element={<ArtistAcctHome user={theUser} />} />
                 <Route path="/songs-list" element={<SongList/>} />
                 <Route path="/video-list" element={<VideoList/>} />
             </Routes>

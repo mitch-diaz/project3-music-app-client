@@ -4,11 +4,32 @@ import {useState, useEffect} from 'react';
 
 
 
-function ArtistInfoDetails() {
+function ArtistInfoDetails({user}) {
     
+    // const {id} = useParams();
+    const [artistDetails, setArtistDetails] = useState([]);
+
+    const fetchArtistDetails = () => {
+        axios.get("http://localhost:5005/auth/user-profile/"+user._id)
+        .then((response) => {
+            console.log(response);
+            setArtistDetails(response.data.artistDetails);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
+    useEffect(() => {
+      fetchArtistDetails();
+    }, [])
+
   return (
-    <div>
-        <h1>Artist Info Details</h1>
+    <div className="details-box-container">
+      <div className="details-box">
+        <h2>Artist Info Details</h2>
+
+      </div>
     </div>
   )
 }
