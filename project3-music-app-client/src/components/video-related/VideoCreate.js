@@ -26,17 +26,25 @@ function ArtistVideoForm() {
     }
 
     return(
-        <div>
-            <div>
-                <p>Your Video Title</p>
-                <input type="text" value={formState.videoTitle} onChange={(e)=>{updateInput(e,"videoTitle")}} />
+        <div className="update-form-box-container">
+
+            <div className="update-form-box">
+            <h2>Add Video Information</h2>
+
+                <div >
+                    <p>Your Video Title</p>
+                    <input type="text" value={formState.videoTitle} onChange={(e)=>{updateInput(e,"videoTitle")}} />
+                </div>
+
+                <div>
+                    <p>Your Video Link</p>
+                    <input className="upload-input" type="text" value={formState.videoUrl} onChange={(e)=>{updateInput(e,"videoUrl")}} />
+                </div>
+
+                <button onClick={createVideoInfo} >Submit</button>
+
             </div>
 
-            <div>
-                <p>Your Video Link</p>
-                <input type="text" value={formState.videoUrl} onChange={(e)=>{updateInput(e,"videoUrl")}} />
-            </div>
-            <button onClick={createVideoInfo} >Submit</button>
         </div>
     )
 }

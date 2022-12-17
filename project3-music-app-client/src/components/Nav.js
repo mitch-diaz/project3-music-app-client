@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
 function Nav() {
+  const navigate = useNavigate();
 
     const [user, setUser] = useState(null);
 
@@ -12,6 +14,7 @@ function Nav() {
         .then((response)=>{
           console.log(response.data)
           if(response.data.message === "successfully logged out")setUser(null);
+          navigate("/");
         })
         .catch((err)=>{
           console.log(err);
@@ -20,10 +23,10 @@ function Nav() {
 
     return (
         <nav className="navbar">
-            {user && 
-            <div>
+             
+            <div className="logout-btn">
                 <button onClick={logout}>Logout</button>
-            </div>}
+            </div>
         </nav>
     )
 }

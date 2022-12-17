@@ -37,8 +37,8 @@ function App() {
                 <Route path="/auth/login" element={<SignUpOrLogin action="login" getUserInfo={getUserInfo} />} />
                 <Route path="/auth/signup" element={<SignUpOrLogin action="signup" getUserInfo={getUserInfo} />} />
                 <Route path="/auth/user-profile" element={<ArtistAcctHome user={theUser} />} />
-                <Route path="/songs-list" element={<SongList/>} />
-                <Route path="/video-list" element={<VideoList/>} />
+                {/* <Route path="/songs-list" element={<SongList/>} />
+                <Route path="/video-list" element={<VideoList/>} /> */}
             </Routes>
 
         </div>

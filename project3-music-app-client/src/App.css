@@ -100,6 +100,28 @@ a {
   align-items: center;
 }
 
+/* ARTIST ACCT HOME PRESENTATION */
+
+.nav-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.logout-btn button {
+  font-size: 1.2em;
+  padding: 10px 20px;
+}
+
+.Artist-acct-home {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.User-section, .Song-section, .Video-section {
+  display: flex;
+}
+
 .update-form-box-container, .details-box-container {
   margin: 50px;
 }
@@ -109,10 +131,6 @@ a {
   border-radius: 10px;
   padding: 10px;
   /* margin-top: 50px; */
-}
-
-.Artist-acct-home {
-  display: flex;
 }
 
 .upload-input {
