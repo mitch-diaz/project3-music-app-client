@@ -112,6 +112,10 @@ a {
   padding: 10px 20px;
 }
 
+.logout-btn, h4 {
+  color: blue;
+}
+
 .Artist-acct-home {
   display: flex;
   flex-direction: column;

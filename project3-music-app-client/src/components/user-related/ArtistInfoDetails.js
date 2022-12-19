@@ -4,13 +4,13 @@ import {useState, useEffect} from 'react';
 
 
 
-function ArtistInfoDetails({user}) {
+function ArtistInfoDetails({theUser}) {
     
     // const {userId} = useParams();
     const [artistDetails, setArtistDetails] = useState([]);
 
     const fetchArtistDetails = () => {
-        axios.get("http://localhost:5005/auth/user-profile")
+        axios.get("http://localhost:5005/auth/user-profile", theUser)
         .then((response) => {
             console.log(response);
             setArtistDetails(response.data);

@@ -53,7 +53,7 @@ function SignUpOrLogin({action, getUserInfo}) {
                 <div>
                     <h4>Password</h4>
                     <input
-                      type="text"
+                      type="password"
                       value={formState.password}
                       onChange={(e) => {updateInput(e, "password");}} />
                 </div>

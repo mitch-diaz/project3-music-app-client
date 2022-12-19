@@ -26,6 +26,7 @@ function Nav() {
              
             <div className="logout-btn">
                 <button onClick={logout}>Logout</button>
+                <h4>View Public Profile</h4>
             </div>
         </nav>
     )
