@@ -17,8 +17,8 @@ function LandingPage() {
     <div className="App">
             <div className="App-header">
 
-                <h1>Music App</h1>
-                <p>Build your playlist and share your music creations with the world.</p>
+                <h1>Set List</h1>
+                <p>Create your set list and share your music with the world.</p>
                 
                 <LoginOrSignupBtns/>
 

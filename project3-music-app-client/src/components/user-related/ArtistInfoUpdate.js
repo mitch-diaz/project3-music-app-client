@@ -15,13 +15,13 @@ function ArtistInfoUpdate({user, getUserInfo}) {
     
     const submitForm = () => {
 
-        const formThing = new FormData();
-        formThing.append("firstName", artistInfoState.firstName)
-        formThing.append("lastName", artistInfoState.lastName)
-        formThing.append("creatorTitle", artistInfoState.creatorTitle)
-        formThing.append("creatorProfile", artistInfoState.creatorProfile)
-        formThing.append("imageFile", artistInfoState.imageFile)
-      axios.put("http://localhost:5005/auth/update/"+user._id, formThing)
+        const userDataForm = new FormData();
+        userDataForm.append("firstName", artistInfoState.firstName)
+        userDataForm.append("lastName", artistInfoState.lastName)
+        userDataForm.append("creatorTitle", artistInfoState.creatorTitle)
+        userDataForm.append("creatorProfile", artistInfoState.creatorProfile)
+        userDataForm.append("imageFile", artistInfoState.imageFile)
+      axios.put("http://localhost:5005/auth/update/"+user._id, userDataForm)
         .then((response) => {
           getUserInfo();
         })

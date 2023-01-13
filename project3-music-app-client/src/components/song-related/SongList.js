@@ -26,7 +26,7 @@ function SongList() {
     const listOfSongs = songList.map((eachSong) => {
         return (
             <div key={eachSong._id} >
-                <p>{eachSong.songTitle}</p>
+                <p>{eachSong.songTitle} - {eachSong.songFile} </p>
             </div>
         )
     })

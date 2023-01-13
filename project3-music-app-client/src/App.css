@@ -112,7 +112,7 @@ a {
   padding: 10px 20px;
 }
 
-.logout-btn, h4 {
+.logout-btn {
   color: blue;
 }
 
@@ -120,6 +120,17 @@ a {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.artistPic, img {
+  /* border: 1px solid #ddd;
+  border-radius: 4px; */
+  padding: 5px;
+  width: 150px;
+}
+
+.details-box-container span {
+  font-weight: 700;
 }
 
 .User-section, .Song-section, .Video-section {
