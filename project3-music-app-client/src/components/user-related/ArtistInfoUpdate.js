@@ -16,8 +16,6 @@ function ArtistInfoUpdate({user, getUserInfo}) {
     const submitForm = () => {
 
         const userDataForm = new FormData();
-        userDataForm.append("firstName", artistInfoState.firstName)
-        userDataForm.append("lastName", artistInfoState.lastName)
         userDataForm.append("creatorTitle", artistInfoState.creatorTitle)
         userDataForm.append("creatorProfile", artistInfoState.creatorProfile)
         userDataForm.append("imageFile", artistInfoState.imageFile)
@@ -35,16 +33,6 @@ function ArtistInfoUpdate({user, getUserInfo}) {
         <div className="update-form-box-container">
             <div className="update-form-box">
                 <h2>Update your Profile</h2>
-
-                <div>
-                    <p>First Name:</p>
-                    <input value={artistInfoState.firstName} onChange={(e)=>{updateArtistInput(e, "firstName")}} />
-                </div>
-                
-                <div>
-                    <p>Last Name:</p>
-                    <input value={artistInfoState.lastName} onChange={(e)=>{updateArtistInput(e, "lastName")}}/>
-                </div>
                 
                 <div>
                     <p>Band name (or your name):</p>
