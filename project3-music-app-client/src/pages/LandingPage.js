@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"; 
 import axios from "axios";
 import LoginOrSignupBtns from "../components/LoginOrSignupBtns";
 
@@ -20,7 +19,7 @@ function LandingPage() {
                 <h1>Set List</h1>
                 <p>Create your set list and share your music with the world.</p>
                 
-                <LoginOrSignupBtns/>
+                <LoginOrSignupBtns />
 
             </div>
 
