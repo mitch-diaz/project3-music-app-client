@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-
 function Login({ getUserInfo}) {
 
     const navigate = useNavigate();
@@ -17,7 +16,7 @@ function Login({ getUserInfo}) {
       setLoginForm({ ...loginForm, [inputToUpdate]: e.target.value });
     };
 
-    const submitSignupForm = () => {
+    const submitLoginForm = () => {
 		axios.post("http://localhost:5005/auth/login",
 			{
 				email: loginForm.email,
@@ -57,7 +56,7 @@ function Login({ getUserInfo}) {
 
                 <br/>
 
-                <button onClick={submitSignupForm}>Submit</button>
+                <button onClick={submitLoginForm}>Submit</button>
 
             </div>
             
