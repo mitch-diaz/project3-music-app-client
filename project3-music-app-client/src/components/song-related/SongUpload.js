@@ -5,18 +5,18 @@ import { useState } from "react";
 function SongUpload() {
     const [newSong, setNewSong] = useState("");
 
-    const updateSongInput = (e, thingToUpdate) => {
-        setNewSong({ ...newSong, [thingToUpdate]: e.target.value });
+    const updateSongInput = (e, songToUpdate) => {
+        setNewSong({ ...newSong, [songToUpdate]: e.target.value });
     }; 
 
     const updateFile = (e) => {
-        setNewSong({ ...newSong, imageFile: e.target.files[0]});
+        setNewSong({ ...newSong, songFile: e.target.files[0]});
     };  
     
 
     const submitForm = () => {
         const songFormData = new FormData();
-        songFormData.append("firstName", newSong.firstName)
+        songFormData.append("songTitle", newSong.songTitle)
         songFormData.append("songFile", newSong.songFile)
       axios.put("http://localhost:5005/songs/add-song", songFormData)
         .then((response) => {
@@ -35,7 +35,7 @@ function SongUpload() {
 
                 <div>
                     <p>Song Title:</p>
-                    <input value={newSong.firstName} onChange={(e)=>{updateSongInput(e, "firstName")}} />
+                    <input value={newSong.songTitle} onChange={(e)=>{updateSongInput(e, "songTitle")}} />
                 </div>
 
                 <div className="upload-input">
