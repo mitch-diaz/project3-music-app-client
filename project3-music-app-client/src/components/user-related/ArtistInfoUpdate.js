@@ -14,14 +14,14 @@ function ArtistInfoUpdate({user, getUserInfo}) {
     };   
     
     const submitForm = () => {
-
         const userDataForm = new FormData();
         userDataForm.append("creatorTitle", artistInfoState.creatorTitle)
         userDataForm.append("creatorProfile", artistInfoState.creatorProfile)
         userDataForm.append("imageFile", artistInfoState.imageFile)
       axios.put("http://localhost:5005/auth/update/"+user._id, userDataForm)
         .then((response) => {
-          getUserInfo();
+          getUserInfo("");
+          console.log(response);
         })
         .catch((err) => {
           console.log(err)

@@ -13,14 +13,14 @@ function SongUpload() {
         setNewSong({ ...newSong, songFile: e.target.files[0]});
     };  
     
-
     const submitForm = () => {
         const songFormData = new FormData();
         songFormData.append("songTitle", newSong.songTitle)
         songFormData.append("songFile", newSong.songFile)
-      axios.put("http://localhost:5005/songs/add-song", songFormData)
+      axios.post("http://localhost:5005/songs/add-song", songFormData)
         .then((response) => {
             setNewSong("");
+            console.log('THE RESPONSE-->', response)
         })
         .catch((err) => {
           console.log(err)

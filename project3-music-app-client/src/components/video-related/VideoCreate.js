@@ -1,47 +1,55 @@
 import axios from 'axios';
-import {useState} from 'react';
+import { useState } from 'react';
 
 
-function ArtistVideoForm() {
-    const [formState, setFormState] = useState({
+function VideoCreate() {
+    const [theUser, setTheUser] = useState();
+    const [videoFormState, setVideoFormState] = useState({
       videoTitle: "",
       videoUrl: "",
     });
 
-    const updateInput = (e, thingToUpdate) => {
-        setFormState({...formState, [thingToUpdate]: e.target.value})
+    // const [videoFormState, setVideoFormState] = useState(user);
+
+    const updateInput = (e, inputToUpdate) => {
+        setVideoFormState({...videoFormState, [inputToUpdate]: e.target.value})
     }
 
-    const createVideoInfo = () => {
-        console.log(formState);
-        axios.post("http://localhost:5005/videos/add-video",{
-          videoTitle: formState.videoTitle,
-          videoUrl: formState.videoUrl,
+    const submitVideoForm = () => {
+        // const videoFormData = new FormData();
+        // videoFormData.append("videoTitle", videoFormState.videoTitle)
+        // videoFormData.append("videoUrl", videoFormState.videoUrl)
+        axios.post("http://localhost:5005/videos/add-video/", {
+            videoTitle: videoFormState.videoTitle,
+            videoUrl: videoFormState.videoUrl,
         })
         .then((response)=>{
-            console.log(response);
+            setVideoFormState(response.data);
+            // getUserInfo()
+            console.log('THE RESPONSE-->', response)
         }).catch((err)=>{
             console.log(err);
         })
     }
+    console.log(videoFormState)
 
     return(
-        <div className="update-form-box-container">
+        <div className="update-form-box-container" >
 
             <div className="update-form-box">
             <h2>Add Video Information</h2>
 
                 <div >
                     <p>Your Video Title</p>
-                    <input type="text" value={formState.videoTitle} onChange={(e)=>{updateInput(e,"videoTitle")}} />
+                    <input type="text" value={videoFormState.videoTitle} onChange={(e)=>{updateInput(e,"videoTitle")}} />
                 </div>
 
                 <div>
                     <p>Your Video Link</p>
-                    <input className="upload-input" type="text" value={formState.videoUrl} onChange={(e)=>{updateInput(e,"videoUrl")}} />
+                    <input className="upload-input" type="text" value={videoFormState.videoUrl} onChange={(e)=>{updateInput(e,"videoUrl")}} />
                 </div>
 
-                <button onClick={createVideoInfo} >Submit</button>
+                <button onClick={submitVideoForm} >Submit</button>
 
             </div>
 
@@ -49,4 +57,4 @@ function ArtistVideoForm() {
     )
 }
 
-export default ArtistVideoForm
+export default VideoCreate

@@ -10,8 +10,8 @@ function VideoList() {
   const fetchVideos = ()=>{
       axios.get("http://localhost:5005/videos/video-list")
       .then((response)=>{
-          console.log(response);
           setVideos(response.data);
+          console.log('videoList response.data-->', response.data)
       })
       .catch((err)=>{
           console.log(err);

@@ -11,8 +11,8 @@ function SongList() {
   const fetchSongs = () => {
     axios.get("http://localhost:5005/songs/songs-list")
     .then((response) => {
-        console.log(response)
         setSongList(response.data);
+        console.log('songList response.data-->', response.data)
     })
     .catch((error) => {
         console.log(error);
