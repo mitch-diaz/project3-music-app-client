@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 
 function VideoCreate() {
-    const [theUser, setTheUser] = useState();
     const [videoFormState, setVideoFormState] = useState({
       videoTitle: "",
       videoUrl: "",
@@ -24,8 +23,7 @@ function VideoCreate() {
             videoUrl: videoFormState.videoUrl,
         })
         .then((response)=>{
-            setVideoFormState(response.data);
-            // getUserInfo()
+            setVideoFormState();
             console.log('THE RESPONSE-->', response)
         }).catch((err)=>{
             console.log(err);
